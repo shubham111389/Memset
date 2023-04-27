@@ -1,5 +1,5 @@
 var em = ["💐","🌹","🌻","🏵️","🌺","🌴","🌈","🍓","🍒","🍎","🍉","🍊","🥭","🍍","🍋","🍏","🍐","🥝","🍇","🥥","🍅","🌶️","🍄","🧅","🥦","🥑","🍔","🍕","🧁","🎂","🍬","🍩","🍫","🎈"];
-//Shuffling above array
+
 var tmp, c, p = em.length;
 if(p) while(--p) {
    c = Math.floor(Math.random() * (p + 1));
@@ -11,7 +11,6 @@ if(p) while(--p) {
 //Variables
 var pre="", pID, ppID=0, turn=0, t="transform", flip="rotateY(180deg)", flipBack="rotateY(0deg)", time, mode;
 
-//Resizing Screen
 window.onresize = init;
 function init() {
    W = innerWidth;
@@ -20,14 +19,11 @@ function init() {
    $('#ol').height(H+"px");
 }
 
-//Showing instructions
 window.onload = function() {
     $("#ol").html(`<center><div id="inst"><h3>Welcome !</h3>Instructions For Game<br/><br/><li>Make pairs of similiar blocks by flipping them.</li><li>To flip a block you can click on it.</li><li>If two blocks you clicked are not similar, they will be flipped back.</li><p style="font-size:18px;">Click one of the following mode to start the game.</p></div><button onclick="start(3, 4)">3 x 4</button> <button onclick="start(4, 4)" style="w">4 x 4</button><button onclick="start(4, 5)">4 x 5</button><button onclick="start(5, 6)">5 x 6</button><button onclick="start(6, 6)">6 x 6</button></center>`);
 }
 
-//Starting the game
 function start(r,l) {
-    //Timer and moves
     min=0, sec=0, moves=0;
     $("#time").html("Time: 00:00");
     $("#moves").html("Moves: 0");
@@ -43,7 +39,6 @@ function start(r,l) {
     }, 1000);
     rem=r*l/2, noItems=rem;
     mode = r+"x"+l;
-    //Generating item array and shuffling it
     var items = [];
     for (var i=0;i<noItems;i++)
         items.push(em[i]);
@@ -57,7 +52,6 @@ function start(r,l) {
         items[p] = tmp;
     }
     
-    //Creating table
     $("table").html("");
     var n=1;
     for (var i = 1;i<=r;i++) {
@@ -69,11 +63,9 @@ function start(r,l) {
          $("table").append("</tr>");
     }
     
-    //Hiding instructions screen
     $("#ol").fadeOut(500);
 }
 
-//Function for flipping blocks
 function change(x) {
   //Variables
   let i = "#"+x+" .inner";
@@ -87,10 +79,8 @@ function change(x) {
   else {
     $(i).css(t, flip);
     if (turn==1) {
-      //This value will prevent spam clicking
       turn=2;
       
-      //If both flipped blocks are not same
       if (pre!=$(b).text()) {
          setTimeout(function() {
             $(pID).css(t, flipBack);
@@ -121,7 +111,6 @@ function change(x) {
       turn=1;
     }
     
-    //If all pairs are matched
     if (rem==0) {
           clearInterval(time);
           if (min==0) {
