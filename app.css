@@ -9,8 +9,8 @@ html {
 body {
     margin:0px;
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(51, 204, 204, 0.8)), to(rgba(255, 102, 102, 0.8)));
-    background-image: -o-linear-gradient(top, rgba(51, 204, 204, 0.8) 0%, rgba(255, 102, 102, 0.8) 100%);
-    background-image: linear-gradient(to bottom, rgba(51, 204, 204, 0.8) 0%, rgba(255, 102, 102, 0.8) 100%);
+    background-image: -o-linear-gradient(top, rgba(217, 244, 64, 0.8) 0%, rgba(90, 252, 181, 0.8) 100%);
+    background-image: linear-gradient(to bottom, rgba(156, 173, 48, 0.8) 0%, rgba(255, 102, 102, 0.8) 100%);
 }
 
 
@@ -87,7 +87,7 @@ button {
     margin: 8px;
     margin-top:5px;
     color: rgb(116, 237, 97);
-    height:56px;
+    height:auto;
     text-align: center;
 }
 
@@ -113,6 +113,7 @@ button {
     display: block;
     color: black;
 }
+
 
 .inner {
     position: relative;
@@ -149,4 +150,9 @@ button {
 }
 button:hover, button:active {
     outline:0;
+}
+@media screen and (max-width: 800px) {
+    #time, #moves,#logo {
+      font-size:3vw; /* The width is 100%, when the viewport is 800px or smaller */
+    }
 }
